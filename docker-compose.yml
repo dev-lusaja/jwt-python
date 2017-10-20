@@ -1,0 +1,9 @@
+version: '2'
+services:
+
+  backend:
+    image: jwt-services:latest
+    volumes:
+      - ./app/:/app
+    ports:
+      - 9001:9001

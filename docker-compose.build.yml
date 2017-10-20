@@ -1,0 +1,9 @@
+version: '2'
+services:
+
+  backend:
+    image: jwt-services:latest
+    build:
+      context: ./docker
+    volumes:
+      - ./app:/app
