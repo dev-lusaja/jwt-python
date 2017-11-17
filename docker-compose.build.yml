@@ -2,7 +2,7 @@ version: '2'
 services:
 
   backend:
-    image: jwt-services:latest
+    image: jwt-python:latest
     build:
       context: ./docker
     volumes:

@@ -1,11 +1,11 @@
 version: '2'
 services:
-
   backend:
-    image: jwt-services:latest
+    container_name: jwtservice_backend
+    image: jwt-python:latest
     volumes:
       - ./app/:/app
       - ./logs/ngix/:/var/log/nginx
-      - ./logs/uwsgi/:/var/log/uwsgi
+      - ./logs/gunicorn/:/var/log/gunicorn
     ports:
       - 9001:80

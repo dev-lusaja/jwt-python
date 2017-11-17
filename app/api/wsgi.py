@@ -1,14 +1,13 @@
 import falcon
-import yaml
 
 from api import load_handlers
+from api.utils import load_config
 
 
 class Wsgi:
     def __init__(self):
-        stream = open('api/routes.yml', 'r')
         self.api = falcon.API()
-        self.routes = yaml.load(stream)
+        self.routes = load_config('api/routes.yml')
         self.load_routes()
 
     def load_routes(self):
@@ -19,4 +18,3 @@ class Wsgi:
             url = template['url']
             handler = template['handler']
             self.api.add_route(url % base, handlers[handler])
-
