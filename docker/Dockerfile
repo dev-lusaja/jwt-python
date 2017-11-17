@@ -8,9 +8,10 @@ RUN yum -y update \
     && yum -y install python27 python27-pip \
     && yum -y install nginx
 
-ADD config /tmp/config
-RUN pip install -r /tmp/config/requirement.txt
+ADD config /tmp/
+RUN pip install -r /tmp/requirement.txt
+RUN /tmp/configservices.sh
 
+EXPOSE 80
 WORKDIR /app
-EXPOSE 9001
-CMD gunicorn app:api -b :9001 --reload
+ENTRYPOINT /tmp/runservices.sh

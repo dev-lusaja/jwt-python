@@ -4,7 +4,7 @@ TAG_BACKEND = latest
 IMAGE_NAME = jwt-services
 PROJECT_NAME = jwtservice
 CONTAINER_NAME = jwtservice_backend
-REGISTRY_HOST = local.urbania.registry:5000
+REGISTRY_HOST = local.registry:5000
 
 pull: ## pull docker images from Cesar Registery, use me with: make pull
 	docker pull $(REGISTRY_HOST)/$(IMAGE_NAME):$(TAG_BACKEND)

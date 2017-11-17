@@ -1,0 +1,4 @@
+secret: "mysuperkey"
+token:
+  time: 2 #(minutes)
+  algorithm: 'HS256'
