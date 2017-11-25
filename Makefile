@@ -26,5 +26,8 @@ status: ## Show containers status, use me with: make status
 ssh: ## Connect to container for ssh protocol
 	docker exec -it $(CONTAINER_NAME) bash
 
+logs: ## Show docker logs
+	docker logs $(CONTAINER_NAME) -f
+
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'
