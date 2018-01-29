@@ -1,5 +1,3 @@
-routes:
-  base: "/v1/authorizations"
-  templates:
-    - {url: "%s/", handler: "EncodeHandler"}
-    - {url: "%s/{token}", handler: "DecodeHandler"}
+---
+/: api.handlres.encode.EncodeHandler
+/{token}: api.handlres.decode.DecodeHandler

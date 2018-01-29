@@ -1,6 +1,6 @@
 FROM amazonlinux:latest
 
-MAINTAINER Oscar Sanchez <dev-lusaja>
+LABEL maintainer="DevLusaja <janoone52@gmail.com>"
 
 # Install Python, tools and Nginx
 

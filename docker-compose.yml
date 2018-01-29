@@ -1,9 +1,9 @@
 version: '2'
 services:
   backend:
-    container_name: jwtservice_backend
+    container_name: jwt_container
     image: jwt-python:latest
     volumes:
       - ./app/:/app
     ports:
-      - 9001:80
+      - 9000:80

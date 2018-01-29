@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import datetime
 import falcon
 import jwt
@@ -5,12 +6,12 @@ import jwt
 
 from falcon.media.validators import jsonschema
 from api.schemas.metadata import MetadataSchema
-from api.utils import load_config
+from api.utils import load_file
 
 
 class EncodeHandler:
     def __init__(self):
-        params = load_config('setup.yml')
+        params = load_file('setup.yml')
         self.token = params['token']
         self.secret = params['secret']
 
@@ -30,5 +31,4 @@ class EncodeHandler:
             resp.status = falcon.HTTP_500
 
     def on_get(self, req, resp):
-        resp.media = {'response': 'Invalid method'}
-        resp.status = falcon.HTTP_401
+        resp.status = falcon.HTTP_404

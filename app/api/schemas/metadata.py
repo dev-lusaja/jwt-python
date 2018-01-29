@@ -6,7 +6,7 @@ class MetadataSchema:
     @staticmethod
     def get():
         schema = {
-            "title": "user",
+            "title": "metadata",
             "type": "object",
             "properties": {
                 "metadata": {"type": "object"}

@@ -1,13 +1,25 @@
 .DEFAULT_GOAL := help
 
-PROJECT_NAME = jwtservice
-CONTAINER_NAME = jwtservice_backend
+PROJECT_NAME = jwt_service
+CONTAINER_NAME = jwt_container
+
+install: ## Install all project
+	@echo 'Installing the project'
+	@make build
+	@make up
+	@echo 'for more details use: make logs'
+
+uninstall: ## Remove all project
+	@echo 'Deleting the project'
+	@make down
+	@echo 'Project deleted'
 
 build: ## build IMAGE, use me with: make build
 	@docker-compose -f docker-compose.build.yml build
 
 up: ## up docker containers
 	docker-compose -p $(PROJECT_NAME) up -d
+	@echo 'Container status'
 	docker-compose -p $(PROJECT_NAME) ps
 
 stop: ## Stop and remove the docker containers, use me with: make down

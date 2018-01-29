@@ -1,12 +1,13 @@
+# -*- coding: utf-8 -*-
 import falcon
 import jwt
 
-from api.utils import load_config
+from api.utils import load_file
 
 
 class DecodeHandler:
     def __init__(self):
-        params = load_config('setup.yml')
+        params = load_file('setup.yml')
         self.token = params['token']
         self.secret = params['secret']
 

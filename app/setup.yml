@@ -1,4 +1,4 @@
-secret: "mysuperkey"
+secret: "mySecret"
 token:
-  time: 2 #(minutes)
+  time: 1 #(minutes)
   algorithm: 'HS256'

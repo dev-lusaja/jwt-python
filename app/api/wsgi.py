@@ -1,20 +1,22 @@
+# -*- coding: utf-8 -*-
 import falcon
+import yaml
+import importlib
 
-from api import load_handlers
-from api.utils import load_config
+from api import prefix
+from api.utils import load_file
 
 
 class Wsgi:
     def __init__(self):
         self.api = falcon.API()
-        self.routes = load_config('api/routes.yml')
         self.load_routes()
 
     def load_routes(self):
-        base = self.routes['routes']['base']
-        templates = self.routes['routes']['templates']
-        handlers = load_handlers()
-        for template in templates:
-            url = template['url']
-            handler = template['handler']
-            self.api.add_route(url % base, handlers[handler])
+        for uri_tpl, resource in load_file('api/routes.yml').items():
+            module_parts = resource.split('.')
+            module_name = '.'.join(module_parts[:-1])
+            module = importlib.import_module(module_name)
+            Resource = getattr(module, module_parts[-1])
+            resource_instance = Resource()
+            self.api.add_route(prefix + uri_tpl, resource_instance)
